@@ -1,4 +1,4 @@
-# Medindo a competência de LLMs no direito brasileiro
+# Medindo a competência de LLMs no direito brasileiro: responder, redigir e julgar
 
 *[English version: `README.md`](README.md)*
 

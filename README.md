@@ -1,4 +1,4 @@
-# Measuring the competence of LLMs in Brazilian law
+# Measuring the competence of LLMs in Brazilian law: answering, drafting and judging
 
 *[Versão em português: `LEIAME.md`](LEIAME.md)*
 

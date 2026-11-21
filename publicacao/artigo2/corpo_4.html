@@ -1,20 +1,138 @@
 <h2><span class="num">5</span>Discussão</h2>
 
-<p>As três medições apontam para a mesma coisa por caminhos independentes: competência jurídica de modelo de linguagem não é uma grandeza só, e a convenção de reportá-la como um número por modelo e por tarefa apaga justamente as diferenças que importam para quem vai usar o resultado. Escrever a peça correta e julgar se a peça alheia está correta são competências associadas a ρ = 0,41 na parte que decide a nota. Acertar o endereçamento e acertar a tese são medidas que se ordenam de forma diferente e têm primeiros colocados diferentes. E o mesmo juiz, na mesma tarefa, concorda com o humano de forma muito distinta conforme a área do direito, com amplitude mediana de 0,279 dentro de um dos nove primeiros colocados, contra 0,047 de distância entre esses mesmos nove.</p>
+<p>As três medições apontam para a mesma coisa por caminhos independentes: competência jurídica de modelo de linguagem não é uma grandeza só, e a convenção de reportá-la como um número por modelo e por tarefa apaga justamente as diferenças que importam para quem vai usar o resultado. Escrever a peça correta e julgar se a peça alheia está correta são competências associadas a ρ = 0,41 na parte que decide a nota. Acertar o endereçamento e acertar a tese são medidas que se ordenam de forma diferente e têm primeiros colocados diferentes. E o mesmo juiz, na mesma tarefa, concorda com o humano de forma muito distinta conforme a área do direito, com amplitude mediana de 0,279 dentro de um dos nove primeiros colocados, contra 0,047 de distância entre esses mesmos nove, ainda que, com doze questões ou três peças por área, essa amplitude esteja dentro da incerteza amostral (Seção 4.5).</p>
 
-<p>A consequência prática mais direta é sobre a escolha de juiz. A pergunta "qual é o melhor juiz" está mal-posta antes de a resposta ser medida, porque a concordância agregada é uma média ponderada que reflete sobretudo a subtarefa mais numerosa: aqui, a classe de mérito tem 413 dos 561 critérios e determina 98% da ordenação. A pergunta respondível é qual é o melhor juiz para a subtarefa e a área que interessam, e ela tem respostas diferentes. Quando existe uma decomposição externa disponível, e o espelho de correção de uma banca examinadora é uma decomposição pronta que o pesquisador não inventou, decompor antes de escolher custa pouco e muda a escolha.</p>
+<p>A consequência prática mais direta é sobre a escolha de juiz. A pergunta "qual é o melhor juiz" está mal-posta antes de a resposta ser medida, porque a concordância agregada é uma média ponderada que reflete sobretudo a subtarefa mais numerosa: aqui, a classe de mérito tem 413 dos 561 critérios e determina 98% da ordenação. A pergunta respondível é qual é o melhor juiz para a subtarefa que interessa e, havendo questões suficientes por área, para a área; e, onde nenhum juiz é claramente o melhor, a maioria dos melhores supera cada um deles (Seção 4.5). Quando existe uma decomposição externa disponível, e o espelho de correção de uma banca examinadora é uma decomposição pronta que o pesquisador não inventou, decompor antes de escolher custa pouco e muda a escolha.</p>
 
-<p>A segunda consequência é sobre o que se pode publicar como ordem. Nos dados aqui, a ordem no topo não é informativa: nove juízes estão dentro do ruído uns dos outros em mérito de peça, e a ordem entre eles muda de execução para execução. O que propomos não é abandonar a tabela, e sim acompanhá-la do piso de ruído e marcar quais posições são distinguíveis. É barato: exige repetir o protocolo, o que os trabalhos cuidadosos já fazem, e converter a dispersão num limiar, o que quase ninguém faz. A reprodutibilidade tem pelo menos três camadas e a área reporta uma. A primeira é a semente, a única reportada com regularidade, e fixá-la não resolve o problema. A segunda é o tamanho do lote: com semente fixa e temperatura zero, a saída ainda depende de com quem ela foi processada. Isso não é defeito, é aritmética de ponto flutuante, e não tem conserto trivial, mas é reportável. A terceira é a identidade do modelo, e é a mais grave, porque nenhuma disciplina de código a resolve: o objeto medido está do outro lado de uma interface de programação, e o mesmo nome dois meses depois é outro modelo ou outra implementação, sem como saber qual. Um valor de κ publicado é verificável dentro de uma janela de tempo e de uma configuração de inferência que ninguém descreve por inteiro.</p>
+<p>A segunda consequência é sobre o que se pode publicar como ordem. Nos dados aqui, a ordem no topo não é informativa: nove juízes estão dentro do ruído uns dos outros em mérito de peça, e a ordem entre eles muda de execução para execução. O que propomos não é abandonar a tabela, e sim acompanhá-la do piso de ruído e marcar quais posições são distinguíveis. É barato: exige repetir o protocolo, o que os trabalhos cuidadosos já fazem, e converter a dispersão num limiar, o que quase ninguém faz. A reprodutibilidade tem pelo menos três camadas e a área reporta uma. A primeira é a amostragem: temperatura, número de amostras e semente, quando a API a aceita. A nossa não aceita, e medimos a dispersão resultante em vez de eliminá-la. A segunda é a configuração do servidor, tamanho de lote incluído, que no nosso teste à parte impediu que qualquer resposta se repetisse, embora esse teste não separe o lote da amostragem. A terceira é a identidade do modelo, e é a mais grave, porque nenhuma disciplina de código a resolve: o objeto medido está do outro lado de uma interface de programação, e o mesmo nome dois meses depois é outro modelo ou outra implementação, sem como saber qual. Um valor de κ publicado é verificável dentro de uma janela de tempo e de uma configuração de inferência que ninguém descreve por inteiro.</p>
 
 <h2><span class="num">6</span>Limitações</h2>
 
-<p>O padrão-ouro é de três anotadores e não foi ampliado: as 940 anotações são herdadas do Rabula [5], e o teto do experimento é o mesmo do original, a concordância entre os três anotadores, de 0,789 e 0,763. O benchmark tem 105 questões e sete áreas, o que é pouco para as leituras por área, em que cada célula repousa sobre 15 questões; a ampliação para 314 questões está planejada. O piso de ruído foi medido no melhor caso. O valor de 0,0101 mede apenas a variação sob inferência repetida com código congelado, e não inclui variação por mudança de prompt, de biblioteca ou de versão do modelo; o piso real entre laboratórios é necessariamente maior e não foi medido. Pelo mesmo motivo, a deriva de dois meses foi observada em um modelo e não medida sistematicamente. Todos os juízes receberam uma única formulação de prompt de julgamento, e é possível que alguns respondam melhor a outra e que a ordem mude com ela, o que não foi testado. Por fim, a comparação entre as correlações dos três painéis da Figura 1 é limitada por poder amostral, como a própria Seção 4.4 declara.</p>
+<p>O padrão-ouro é de três anotadores e não foi ampliado: as 940 anotações são herdadas do Rabula [5], e o teto do experimento é o mesmo do original, a concordância entre os três anotadores, de 0,789 e 0,763. O benchmark tem 105 questões e sete áreas, o que é pouco para as leituras por área, em que cada célula repousa sobre 15 questões; a ampliação para 314 questões está planejada. O piso de ruído foi medido no melhor caso. O valor de 0,0101 mede apenas a variação sob amostragem repetida com o modelo de prompt fixo, e não inclui variação por mudança de prompt, de biblioteca ou de versão do modelo; o piso real entre laboratórios é necessariamente maior e não foi medido. Pelo mesmo motivo, a deriva de dois meses foi observada em um modelo e não medida sistematicamente. Todos os juízes receberam uma única formulação de prompt de julgamento, e é possível que alguns respondam melhor a outra e que a ordem mude com ela, o que não foi testado. A comparação entre as correlações dos três painéis da Figura 1 é limitada por poder amostral, como a própria Seção 4.4 declara. A redação de peça tem só três questões por área, de modo que as leituras por área desse gênero repousam sobre poucos casos. O agrupamento dos títulos de critério em forma e mérito é nosso e não foi validado por um anotador independente; o Apêndice D o lista por inteiro. Os dois juízes que corrigem os respondentes também estão entre os respondentes e corrigem as próprias respostas. Por fim, os cinco juízes Claude têm uma única amostra por repetição em vez de uma maioria de três, o que torna as suas repetições mais ruidosas que as dos demais.</p>
 
 <h2><span class="num">7</span>Conclusão</h2>
 
-<p>Medimos 31 modelos de linguagem em três papéis sobre o mesmo material jurídico, as mesmas 105 questões da segunda fase do Exame de Ordem e os mesmos 940 critérios do espelho oficial, com padrão-ouro de 3 juristas, e reportamos os três papéis por área do direito e por classe de critério. Saber escrever uma peça e saber julgar a peça alheia são competências associadas, e a associação enfraquece conforme a tarefa deixa de cobrar forma e passa a cobrar mérito, de ρ = 0,67 na questão discursiva a 0,41 nos critérios de mérito da peça. A redação de peça não é uma tarefa única para efeito de medição: separada nas classes que a banca rotula, ela produz duas ordens que concordam a ρ = 0,48 e têm primeiros colocados diferentes. E a concordância de um mesmo juiz varia entre áreas do direito muito mais do que os juízes do topo variam entre si, o que torna o número único por juiz uma descrição insuficiente da régua.</p>
+<p>Medimos 31 modelos de linguagem em três papéis sobre o mesmo material jurídico, as mesmas 105 questões da segunda fase do Exame de Ordem e os mesmos 940 critérios do espelho oficial, com padrão-ouro de 3 juristas, e reportamos os três papéis por área do direito e por classe de critério. Saber escrever uma peça e saber julgar a peça alheia são competências associadas, e a associação enfraquece conforme a tarefa deixa de cobrar forma e passa a cobrar mérito, de ρ = 0,67 na questão discursiva a 0,41 nos critérios de mérito da peça. A redação de peça não é uma tarefa única para efeito de medição: separada nas classes que a banca rotula, ela produz duas ordens que concordam a ρ = 0,48 e têm primeiros colocados diferentes. E a concordância de um mesmo juiz varia entre áreas do direito mais do que os juízes do topo variam entre si, mas, com esta amostra, essa variação está dentro da incerteza por área: a tabela por área descreve e ainda não serve para escolher; combinar os melhores juízes, ao contrário, compensa em todas as tarefas.</p>
 
-<p>Daí saem três recomendações de reporte, e nenhuma exige dado novo. Reportar a tabela de concordância acompanhada do piso de ruído, marcando quais posições são distinguíveis, porque na nossa as nove primeiras não são. Decompor a tarefa antes de escolher o juiz sempre que exista uma decomposição externa disponível, porque a concordância agregada reflete a subtarefa mais numerosa e não necessariamente a que interessa. E tratar o tamanho de lote como parte do protocolo, ao lado de temperatura e semente, porque ele também determina a saída. Todas exigem apenas reportar o que já foi medido e é hoje descartado.</p>
+<p>Daí saem três recomendações de reporte, e nenhuma exige dado novo. Reportar a tabela de concordância acompanhada do piso de ruído, marcando quais posições são distinguíveis, porque na nossa as nove primeiras não são. Decompor a tarefa antes de escolher o juiz sempre que exista uma decomposição externa disponível, porque a concordância agregada reflete a subtarefa mais numerosa e não necessariamente a que interessa. E reportar a configuração de amostragem e de servidor do juiz, temperatura, número de amostras, semente quando disponível e condições de lote, porque a saída depende de todas elas. Todas exigem apenas reportar o que já foi medido e é hoje descartado.</p>
+
+<h2><span class="num"></span>Apêndice A. O prompt de julgamento</h2>
+
+<p>O prompt é reproduzido abaixo como foi usado, na versão da questão discursiva; a versão da peça difere apenas na primeira frase, que descreve o exercício prático, e por omitir a frase sobre letras e partes da questão. Os campos entre chaves são preenchidos a cada chamada; <code>{cache_buster}</code> é um comentário com um token hexadecimal aleatório, e o juiz deve devolver a soma dos dois inteiros aleatórios no campo <code>cache_beaker</code> de cada veredito.</p>
+
+<pre>Na segunda fase do exame da Ordem dos Advogados do Brasil o candidato deve responder a questões discursivas.
+
+Você será o avaliador da resposta do candidato. Receberá 3 campos: &#x27;gabarito&#x27;, &#x27;criterios&#x27; e &#x27;resposta_candidato&#x27;.
+O campo &#x27;gabarito&#x27; é a referência oficial de resposta. O campo &#x27;criterios&#x27; define os critérios objetivos para conferição de pontuação e o campo resposta_candidato contém a resposta do candidato.
+
+A persona que irá adotar para avaliar é uma examinador e professor de direito experiente com 10 anos de profissão.
+
+Instruções de resposta:
+1. A resposta deve ser um json com o campo &#x27;resultado&#x27; cujo conteúdo tem a mesma estrutura do JSON com os critérios mas com três campos a mais em cada linha: &#x27;acerto&#x27;, que pode ser 0 ou 1 a depender se o candidato satisfez o critério, &#x27;raciocinio&#x27;, que contém o motivo da decisão, resumidamente e &#x27;cache_beaker&#x27; contém a soma entre {num1} e {num2} .
+2. Os critérios de nota estão definidos no campo &#x27;criterios&#x27;. Nele, há quanto cada cumprimento de critério confere de pontuação.
+3. O critério contém referências às letras da questão (A, B, C) e a parte dessa mesma questão, que funciona como um pedaço da questão.
+
+REGRAS IMPORTANTES DE AVALIAÇÃO (cumpra todas):
+- Quando o critério contiver alternativas separadas por &quot;ou&quot; (ex.: &quot;Art. X da CRFB/88 ou Súmula Vinculante nº Y&quot;), QUALQUER UMA das alternativas é suficiente para acerto=1. NÃO exija que o candidato cite todas.
+- Aceite paráfrases corretas e variações de redação do gabarito (ex.: &quot;art. 71, III, da Constituição Federal&quot; = &quot;Art. 71, inciso III, da CRFB/88&quot; = &quot;artigo 71, III, CF&quot;).
+- Avalie o CONCEITO jurídico, não o match literal. Se o candidato expressou a ideia certa com outras palavras, é acerto=1.
+- Para critérios de citação legal: se o gabarito lista N referências como alternativas (com &quot;ou&quot;), basta o candidato citar 1 delas — mesmo que com formato ligeiramente diferente — para acerto=1.
+- Se o gabarito lista N elementos COM &quot;e&quot; (cumulativos), aí sim exija TODOS.
+
+A resposta final não deve ter &#x27;&#x27;&#x27;json porque isso quebra a lógica.
+
+{cache_buster}
+
+RESPOSTA CANDIDATO
+´´´ {resposta_candidato} ´´´
+
+GABARITO
+´´´ {gabarito} ´´´
+
+CRITERIOS
+´´´ {criterios} ´´´
+
+JSON resposta:</pre>
+
+<h2><span class="num"></span>Apêndice B. Um item completo</h2>
+
+<p>Direito administrativo, 41º Exame, questão discursiva 1. O enunciado:</p>
+
+<pre>Esglobênia, servidora pública federal estável, acreditava ter preenchido os respectivos requisitos do Regime Próprio de Previdência no cargo que ocupava, razão pela qual pleiteou e obteve, junto ao órgão de origem, a aposentadoria voluntária.  Ato contínuo, o processo foi encaminhado ao Tribunal de Contas da União, o qual verificou algumas inconsistências no deferimento do pedido, de modo que está tendente a negar o registro da aposentadoria, sendo certo que o processo chegou na Corte de Contas há apenas um ano.  Diante dessa situação hipotética, responda como advogado(a), fundamentadamente, aos questionamentos a seguir.  A)  O ato aposentadoria de Esglobênia estava perfeito, ou seja, completou o seu ciclo de formação, antes do pronunciamento da Corte de Contas? Justifique. (Valor: 0,60) B) Para negar o registro da aposentadoria de Esglobênia, o Tribunal de Contas precisa observar a ampla defesa e o contraditório? Justifique. (Valor: 0,65) Obs.: o(a) examinando(a) deve fundamentar as respostas. A mera citação do dispositivo legal não confere pontuação.</pre>
+
+<p>A resposta avaliada, escrita pelo GPT-4o mini, como os anotadores humanos e os juízes a viram:</p>
+
+<pre>A) O ato de aposentadoria de Esglobênia não estava perfeito, pois o processo de aposentadoria ainda estava sujeito à análise do Tribunal de Contas da União (TCU), que possui a competência para apreciar a legalidade dos atos administrativos, incluindo a aposentadoria de servidores públicos. O ciclo de formação do ato se completa com o registro pelo TCU, e enquanto este não ocorrer, o ato permanece sob análise e pode ser considerado irregular.
+
+B) Sim, para negar o registro da aposentadoria de Esglobênia, o Tribunal de Contas deve observar o princípio da ampla defesa e do contraditório. Isso se deve ao fato de que a negativa de registro implica em uma decisão que pode afetar diretamente os direitos da servidora, sendo necessário garantir que ela tenha a oportunidade de se manifestar e apresentar suas razões antes que uma decisão desfavorável seja tomada.</pre>
+
+<p>Os quatro critérios da banca:</p>
+<ul>
+<li><b>A-I</b> (0,50 pontos). Não. A concessão de aposentadoria configura ato complexo que só estará perfeito após pronunciamento da Corte de Contas</li>
+<li><b>A-II</b> (0,10 pontos). nos termos do Art. 71, inciso III, da CRFB/88 ou Súmula Vinculante nº 3</li>
+<li><b>B-I</b> (0,55 pontos). Não. O contraditório e a ampla defesa são assegurados no Tribunal de Contas da União quando da decisão puder resultar anulação ou revogação de ato administrativo, excetuada a apreciação de legalidade do ato de concessão inicial de aposentadoria, reforma e pensão</li>
+<li><b>B-II</b> (0,10 pontos). consoante a Súmula Vinculante nº 3</li>
+</ul>
+
+<p>A Tabela 6 traz, para cada critério, o veredito de cada anotador e o do Kimi K2.5 em cada uma das cinco repetições, como maioria de três amostras. Nas repetições 1 e 2, uma das três amostras marcou o critério A-I como não cumprido; a maioria recupera o veredito, e é essa a variação que o piso de ruído da Seção 4.2 mede.</p>
+
+<figure class="tab" id="tab-6">
+<figcaption><b>Tabela 6.</b> O item do Apêndice B: critérios, pontuação, os três vereditos humanos e o veredito por maioria do Kimi K2.5 em cada uma das cinco repetições (1 = cumprido).</figcaption>
+<div class="rol"><table>
+<thead><tr><th>Critério</th><th class="n">Pontos</th><th>Humanos</th><th>Kimi, rep. 1–5</th></tr></thead>
+<tbody>
+<tr><td>A-I</td><td class="n">0,50</td><td>1 / 1 / 1</td><td>1 1 1 1 1</td></tr>
+<tr><td>A-II</td><td class="n">0,10</td><td>0 / 0 / 0</td><td>0 0 0 0 0</td></tr>
+<tr><td>B-I</td><td class="n">0,55</td><td>0 / 0 / 0</td><td>0 0 0 0 0</td></tr>
+<tr><td>B-II</td><td class="n">0,10</td><td>0 / 0 / 0</td><td>0 0 0 0 0</td></tr>
+</tbody></table></div>
+</figure>
+
+<h2><span class="num"></span>Apêndice C. Configuração dos juízes</h2>
+<p>Os 31 juízes rodam a temperatura 0,2, sem semente, com o prompt do Apêndice A. O teto de saída é o solicitado; quando a resposta é cortada, ele é dobrado até 32.000 tokens ou até o limite que o modelo aceita. Amostras é o número de chamadas independentes por questão em cada repetição, combinadas por voto de maioria. Os respondentes rodam a temperatura 0,7, com teto de saída de 2.500 tokens e três execuções por questão.</p>
+<figure class="tab" id="tab-7">
+<figcaption><b>Tabela 7.</b> Os juízes: API do provedor, identificador do modelo, teto de saída solicitado em tokens e amostras por repetição.</figcaption>
+<div class="rol"><table>
+<thead><tr><th>Juiz</th><th>API</th><th>Identificador do modelo</th><th class="n">Teto</th><th class="n">Amostras</th></tr></thead>
+<tbody>
+<tr><td>claude-haiku-4-5</td><td>Bedrock</td><td><code>us.anthropic.claude-haiku-4-5-20251001-v1:0</code></td><td class="n">8.000</td><td class="n">1</td></tr>
+<tr><td>claude-opus-4-5</td><td>Bedrock</td><td><code>us.anthropic.claude-opus-4-5-20251101-v1:0</code></td><td class="n">8.000</td><td class="n">1</td></tr>
+<tr><td>claude-opus-4-6</td><td>Bedrock</td><td><code>us.anthropic.claude-opus-4-6-v1</code></td><td class="n">8.000</td><td class="n">1</td></tr>
+<tr><td>claude-sonnet-4-5</td><td>Bedrock</td><td><code>us.anthropic.claude-sonnet-4-5-20250929-v1:0</code></td><td class="n">8.000</td><td class="n">1</td></tr>
+<tr><td>claude-sonnet-4-6</td><td>Bedrock</td><td><code>us.anthropic.claude-sonnet-4-6</code></td><td class="n">8.000</td><td class="n">1</td></tr>
+<tr><td>deepseek-v3</td><td>Bedrock</td><td><code>deepseek.v3.2</code></td><td class="n">8.000</td><td class="n">3</td></tr>
+<tr><td>glm-4-7</td><td>Bedrock</td><td><code>zai.glm-4.7</code></td><td class="n">8.000</td><td class="n">3</td></tr>
+<tr><td>glm-5</td><td>Bedrock</td><td><code>zai.glm-5</code></td><td class="n">8.000</td><td class="n">3</td></tr>
+<tr><td>gpt-oss-120b</td><td>Bedrock</td><td><code>openai.gpt-oss-120b-1:0</code></td><td class="n">16.000</td><td class="n">3</td></tr>
+<tr><td>kimi-k2-5</td><td>Bedrock</td><td><code>moonshotai.kimi-k2.5</code></td><td class="n">16.000</td><td class="n">3</td></tr>
+<tr><td>kimi-k2-thinking</td><td>Bedrock</td><td><code>moonshot.kimi-k2-thinking</code></td><td class="n">16.000</td><td class="n">3</td></tr>
+<tr><td>llama3-3-70b</td><td>Bedrock</td><td><code>us.meta.llama3-3-70b-instruct-v1:0</code></td><td class="n">2.048</td><td class="n">3</td></tr>
+<tr><td>llama3-70b</td><td>Bedrock</td><td><code>meta.llama3-70b-instruct-v1:0</code></td><td class="n">2.048</td><td class="n">3</td></tr>
+<tr><td>llama3-8b</td><td>Bedrock</td><td><code>meta.llama3-8b-instruct-v1:0</code></td><td class="n">2.048</td><td class="n">3</td></tr>
+<tr><td>llama4-maverick</td><td>Bedrock</td><td><code>us.meta.llama4-maverick-17b-instruct-v1:0</code></td><td class="n">8.000</td><td class="n">3</td></tr>
+<tr><td>llama4-scout</td><td>Bedrock</td><td><code>us.meta.llama4-scout-17b-instruct-v1:0</code></td><td class="n">8.000</td><td class="n">3</td></tr>
+<tr><td>magistral-small</td><td>Bedrock</td><td><code>mistral.magistral-small-2509</code></td><td class="n">16.000</td><td class="n">3</td></tr>
+<tr><td>minimax-m2-5</td><td>Bedrock</td><td><code>minimax.minimax-m2.5</code></td><td class="n">8.000</td><td class="n">3</td></tr>
+<tr><td>mistral-l3-675b</td><td>Bedrock</td><td><code>mistral.mistral-large-3-675b-instruct</code></td><td class="n">8.000</td><td class="n">3</td></tr>
+<tr><td>mistral-large</td><td>Bedrock</td><td><code>mistral.mistral-large-2402-v1:0</code></td><td class="n">8.000</td><td class="n">3</td></tr>
+<tr><td>mistral-small</td><td>Bedrock</td><td><code>mistral.mistral-small-2402-v1:0</code></td><td class="n">2.048</td><td class="n">3</td></tr>
+<tr><td>mixtral-8x7b</td><td>Bedrock</td><td><code>mistral.mixtral-8x7b-instruct-v0:1</code></td><td class="n">4.096</td><td class="n">3</td></tr>
+<tr><td>nemotron-s3-120b</td><td>Bedrock</td><td><code>nvidia.nemotron-super-3-120b</code></td><td class="n">8.000</td><td class="n">3</td></tr>
+<tr><td>nova-lite</td><td>Bedrock</td><td><code>amazon.nova-lite-v1:0</code></td><td class="n">8.000</td><td class="n">3</td></tr>
+<tr><td>nova-micro</td><td>Bedrock</td><td><code>amazon.nova-micro-v1:0</code></td><td class="n">8.000</td><td class="n">3</td></tr>
+<tr><td>nova-pro</td><td>Bedrock</td><td><code>amazon.nova-pro-v1:0</code></td><td class="n">8.000</td><td class="n">3</td></tr>
+<tr><td>qwen3-235b-vl</td><td>Bedrock</td><td><code>qwen.qwen3-vl-235b-a22b</code></td><td class="n">8.000</td><td class="n">3</td></tr>
+<tr><td>qwen3-32b</td><td>Bedrock</td><td><code>qwen.qwen3-32b-v1:0</code></td><td class="n">8.000</td><td class="n">3</td></tr>
+<tr><td>qwen3-80b-a3b</td><td>Bedrock</td><td><code>qwen.qwen3-next-80b-a3b</code></td><td class="n">8.000</td><td class="n">3</td></tr>
+<tr><td>sabia-4</td><td>Maritaca</td><td><code>sabia-4</code></td><td class="n">8.000</td><td class="n">3</td></tr>
+<tr><td>sabiazinho-4</td><td>Maritaca</td><td><code>sabiazinho-4</code></td><td class="n">8.000</td><td class="n">3</td></tr>
+</tbody></table></div>
+</figure>
+
+<h2><span class="num"></span>Apêndice D. Títulos de critério por classe</h2>
+<p>A banca dá um título a cada critério da peça. Agrupamos os 60 títulos distintos nas duas classes da Seção 3.2; o número de critérios com cada título está entre parênteses. Nenhum título cai nas duas classes.</p>
+<p><b>Forma</b> (148 critérios): Endereçamento (56); Fechamento (22); Partes e Fundamento Legal (10); Qualificação das partes (9); Prazo e Fechamento (6); Gratuidade de justiça e prioridade (4); Interposição (4); Petição de Interposição (4); Requisitos de admissibilidade recursal (4); Tempestividade (4); ENDEREÇAMENTO (3); Procedimento (3); Requisitos de Admissibilidade Recursal (3); Encerramento (2); Honorários advocatícios (2); Partes (2); Peça (2); Qualificação dos interessados/ requerentes (2); Requisitos Tempestividade (2); Valor da causa / Fechamento (2); FECHAMENTO (1); Menção ao valor da causa (1).</p>
+<p><b>Mérito</b> (413 critérios): Pedidos (71); Fundamentação (55); Fundamentos de mérito (34); Fundamentação Jurídica/Legal (23); Razões recursais (21); Mérito (20); Razões de apelação (19); Cabimento (14); Direitos lesados (14); Fatos e Alegações de Mérito (12); Fundamentos jurídicos (12); Requerimentos (11); Legitimidade (9); PEDIDOS (9); Direitos violados (8); Fundamentos (8); Vínculo e verbas pela extinção (7); Das Provas (6); Fundamentos da cautelar (6); DAS PROVAS E DO DEMONSTRATIVO DO DÉBITO ATUALIZADO (5); Dano Patrimonial (material) (5); Dos Pedidos (5); Fundamentos da liminar (5); Alegações Preliminares (4); Cabimento da ADC (4); FUNDAMENTOS JURÍDICOS (3); Prova domínio e qualidade de terceiro (3); Tutela provisória de urgência (3); DO TÍTULO EXECUTIVO EXTRAJUDICIAL (2); Dano Extrapatrimonial (2); Do litisconsórcio unitário (2); Fundamentos para a concessão da medida liminar (2); LEGITIMIDADE ATIVA (2); LEGITIMIDADE PASSIVA (2); Pedido (2); Fatos (1); Legitimidade ativa (1); Razões (1).</p>
 
 <h2><span class="num"></span>Agradecimentos e declarações</h2>
 
@@ -36,5 +154,12 @@
 <li>Pacheco, E., Russo, C. M. <i>Agreement of 31 candidate automatic judges against a human gold standard on Brazilian legal tasks</i>, v1.0 [Conjunto de dados]. Zenodo, 2026. doi:10.5281/zenodo.22739161.</li>
 <li>Pacheco, E., Russo, C. M. <i>Paired raw and structured corpora for Brazilian legal domain adaptation</i>, v1.0 [Conjunto de dados]. Zenodo, 2026. doi:10.5281/zenodo.22739216.</li>
 <li>Pacheco, E., Russo, C. M. <i>Judgments of 180 trained conditions on a Brazilian Bar Examination benchmark</i>, v1.0 [Conjunto de dados]. Zenodo, 2026. doi:10.5281/zenodo.22739184.</li>
-<li>Pacheco, E. <i>Medindo a competência de LLMs no direito brasileiro</i> [Código-fonte]. github.com/eduardocbpacheco/measuring-llm-competence-brazilian-law, 2026.</li>
+<li>Pacheco, E. <i>Medindo a competência de LLMs no direito brasileiro: responder, redigir e julgar</i> [Código-fonte]. github.com/eduardocbpacheco/measuring-llm-competence-brazilian-law-, 2026.</li>
+<li>Thakur, A. S., Choudhary, K., Ramayapally, V. S., Vaidyanathan, S., Hupkes, D. <i>Judging the Judges: Evaluating Alignment and Vulnerabilities in LLMs-as-Judges</i>. Proceedings of the Fourth Workshop on Generation, Evaluation and Metrics (GEM²), 2025. arXiv:2406.12624.</li>
+<li>Tan, S., Zhuang, S., Montgomery, K., Tang, W. Y., Cuadron, A., Wang, C., Popa, R. A., Stoica, I. <i>JudgeBench: A Benchmark for Evaluating LLM-based Judges</i>. ICLR, 2025.</li>
+<li>Zeng, Z., Yu, J., Gao, T., Meng, Y., Goyal, T., Chen, D. <i>Evaluating Large Language Models at Evaluating Instruction Following</i>. ICLR, 2024.</li>
+<li>Panickssery, A., Bowman, S. R., Feng, S. <i>LLM Evaluators Recognize and Favor Their Own Generations</i>. NeurIPS, 2024.</li>
+<li>Feinstein, A. R., Cicchetti, D. V. <i>High Agreement but Low Kappa: I. The Problems of Two Paradoxes</i>. Journal of Clinical Epidemiology, 43(6), 543–549, 1990.</li>
+<li>Byrt, T., Bishop, J., Carlin, J. B. <i>Bias, Prevalence and Kappa</i>. Journal of Clinical Epidemiology, 46(5), 423–429, 1993.</li>
+<li>Gwet, K. L. <i>Computing Inter-Rater Reliability and Its Variance in the Presence of High Agreement</i>. British Journal of Mathematical and Statistical Psychology, 61(1), 29–48, 2008.</li>
 </ol>

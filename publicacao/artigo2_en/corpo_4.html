@@ -1,20 +1,138 @@
 <h2><span class="num">5</span>Discussion</h2>
 
-<p>The three measurements point the same way by independent routes: the legal competence of a language model is not a single quantity, and the convention of reporting it as one number per model and per task erases exactly the differences that matter to whoever will use the result. Writing the correct document and judging whether someone else's document is correct are competences associated at ρ = 0.41 on the part that decides the score. Getting the addressing right and getting the thesis right are measures that order differently and have different leaders. And the same judge, on the same task, agrees with the human very differently depending on the area of law, with a median range of 0.279 within one of the top nine, against 0.047 of distance among those same nine.</p>
+<p>The three measurements point the same way by independent routes: the legal competence of a language model is not a single quantity, and the convention of reporting it as one number per model and per task erases exactly the differences that matter to whoever will use the result. Writing the correct document and judging whether someone else's document is correct are competences associated at ρ = 0.41 on the part that decides the score. Getting the addressing right and getting the thesis right are measures that order differently and have different leaders. And the same judge, on the same task, agrees with the human very differently depending on the area of law, with a median range of 0.279 within one of the top nine, against 0.047 of distance among those same nine, although with twelve questions or three documents per area that range is within sampling uncertainty (Section 4.5).</p>
 
-<p>The most direct practical consequence concerns the choice of judge. The question "which is the best judge" is ill-posed before the answer is measured, because aggregate agreement is a weighted mean that reflects above all the most numerous subtask: here, the substance class has 413 of the 561 criteria and determines 98% of the ordering. The answerable question is which is the best judge for the subtask and the area that matter, and it has different answers. When an external decomposition is available, and the grading guidelines of an examining board are a ready-made decomposition the researcher did not invent, decomposing before choosing costs little and changes the choice.</p>
+<p>The most direct practical consequence concerns the choice of judge. The question "which is the best judge" is ill-posed before the answer is measured, because aggregate agreement is a weighted mean that reflects above all the most numerous subtask: here, the substance class has 413 of the 561 criteria and determines 98% of the ordering. The answerable question is which is the best judge for the subtask that matters, and, given enough questions per area, for the area; and where no single judge is clearly best, a majority of the best few is better than any of them (Section 4.5). When an external decomposition is available, and the grading guidelines of an examining board are a ready-made decomposition the researcher did not invent, decomposing before choosing costs little and changes the choice.</p>
 
-<p>The second consequence concerns what can be published as an ordering. In the data here, the order at the top is not informative: nine judges are within each other's noise on document substance, and the order among them changes from run to run. What we propose is not to abandon the table, but to accompany it with the noise floor and to mark which positions are distinguishable. It is cheap: it requires repeating the protocol, which careful work already does, and converting the resulting dispersion into a threshold, which almost nobody does. Reproducibility has at least three layers and the field reports one. The first is the seed, the only one reported regularly, and fixing it does not solve the problem. The second is batch size: with a fixed seed and temperature zero, the output still depends on what it was processed alongside. This is not a defect, it is floating-point arithmetic, and it has no trivial fix, but it is reportable. The third is the identity of the model, and it is the most serious, because no discipline of code resolves it: the object measured sits on the other side of an application programming interface, and the same name two months later is another model or another implementation, with no way to know which. A published κ value is verifiable within a window of time and an inference configuration that nobody describes in full.</p>
+<p>The second consequence concerns what can be published as an ordering. In the data here, the order at the top is not informative: nine judges are within each other's noise on document substance, and the order among them changes from run to run. What we propose is not to abandon the table, but to accompany it with the noise floor and to mark which positions are distinguishable. It is cheap: it requires repeating the protocol, which careful work already does, and converting the resulting dispersion into a threshold, which almost nobody does. Reproducibility has at least three layers and the field reports one. The first is sampling: temperature, number of samples and seed, when the API accepts one. Ours does not, and we measured the resulting dispersion instead of removing it. The second is the serving configuration, batch size included, which in our side test prevented any answer from being reproduced, although that test does not separate batching from sampling. The third is the identity of the model, and it is the most serious, because no discipline of code resolves it: the object measured sits on the other side of an application programming interface, and the same name two months later is another model or another implementation, with no way to know which. A published κ value is verifiable within a window of time and an inference configuration that nobody describes in full.</p>
 
 <h2><span class="num">6</span>Limitations</h2>
 
-<p>The gold standard has three annotators and was not extended: the 940 annotations are inherited from Rabula [5], and the ceiling of the experiment is the same as the original one, the agreement among the three annotators, at 0.789 and 0.763. The benchmark has 105 questions and seven areas, which is little for the readings by area, where each cell rests on 15 questions; the extension to 314 questions is planned. The noise floor was measured in the best case: the value of 0.0101 measures only the variation under repeated inference with frozen code, and does not include variation from a change of prompt, of library or of model version, so the real floor across laboratories is necessarily higher and was not measured. For the same reason, the two-month drift was observed in one model and not measured systematically. All judges received a single formulation of the judging prompt, and it is possible that some respond better to another and that the order changes with it, which was not tested. Finally, the comparison among the correlations of the three panels of Figure 1 is limited by sample power, as Section 4.4 itself states.</p>
+<p>The gold standard has three annotators and was not extended: the 940 annotations are inherited from Rabula [5], and the ceiling of the experiment is the same as the original one, the agreement among the three annotators, at 0.789 and 0.763. The benchmark has 105 questions and seven areas, which is little for the readings by area, where each cell rests on 15 questions; the extension to 314 questions is planned. The noise floor was measured in the best case: the value of 0.0101 measures only the variation under repeated sampling with a fixed prompt template, and does not include variation from a change of prompt, of library or of model version, so the real floor across laboratories is necessarily higher and was not measured. For the same reason, the two-month drift was observed in one model and not measured systematically. All judges received a single formulation of the judging prompt, and it is possible that some respond better to another and that the order changes with it, which was not tested. The comparison among the correlations of the three panels of Figure 1 is limited by sample power, as Section 4.4 itself states. Document drafting has only three questions per area, so the per-area readings of that genre rest on few cases. The grouping of criterion titles into form and substance is ours and was not validated by an independent annotator; Appendix D lists it in full. The two judges that grade respondents also appear among the respondents and grade their own answers. Finally, the five Claude judges have a single sample per repetition rather than a majority of three, which makes their repetitions noisier than those of the other judges.</p>
 
 <h2><span class="num">7</span>Conclusion</h2>
 
-<p>We measured 31 language models in three roles over the same legal material, the same 105 questions from the second stage of the OAB Bar Exam and the same 940 criteria of the official guidelines, with a gold standard from 3 legal experts, and we report the three roles by area of law and by class of criterion. Knowing how to write a legal document and knowing how to judge someone else's are associated competences, and the association weakens as the task stops demanding form and starts demanding substance, from ρ = 0.67 on the discursive question to 0.41 on the substantive criteria of the document. Document drafting is not a single task for measurement purposes: split into the classes the board labels, it produces two orderings that agree at ρ = 0.48 and have different leaders. And the agreement of a single judge varies across areas of law far more than the top judges vary among themselves, which makes a single number per judge an insufficient description of the ruler.</p>
+<p>We measured 31 language models in three roles over the same legal material, the same 105 questions from the second stage of the OAB Bar Exam and the same 940 criteria of the official guidelines, with a gold standard from 3 legal experts, and we report the three roles by area of law and by class of criterion. Knowing how to write a legal document and knowing how to judge someone else's are associated competences, and the association weakens as the task stops demanding form and starts demanding substance, from ρ = 0.67 on the discursive question to 0.41 on the substantive criteria of the document. Document drafting is not a single task for measurement purposes: split into the classes the board labels, it produces two orderings that agree at ρ = 0.48 and have different leaders. The agreement of a single judge varies across areas of law more than the top judges vary among themselves, but at our sample size that variation is within the per-area uncertainty, so the per-area table describes and does not yet select; combining the best judges, by contrast, pays on every task.</p>
 
-<p>Three reporting recommendations follow, and none requires new data. Report the agreement table accompanied by the noise floor, marking which positions are distinguishable, because in ours the top nine are not. Decompose the task before choosing the judge whenever an external decomposition is available, because aggregate agreement reflects the most numerous subtask and not necessarily the one that matters. And treat batch size as part of the protocol, alongside temperature and seed, because it also determines the output. All of them require only reporting what has already been measured and is currently discarded.</p>
+<p>Three reporting recommendations follow, and none requires new data. Report the agreement table accompanied by the noise floor, marking which positions are distinguishable, because in ours the top nine are not. Decompose the task before choosing the judge whenever an external decomposition is available, because aggregate agreement reflects the most numerous subtask and not necessarily the one that matters. And report the sampling and serving configuration of the judge, temperature, number of samples, seed when available and batch conditions, because the output depends on all of them. All of them require only reporting what has already been measured and is currently discarded.</p>
+
+<h2><span class="num"></span>Appendix A. The judging prompt</h2>
+
+<p>The prompt is in Portuguese, as used. It is reproduced below for the discursive question; the document version differs only in the first sentence, which describes the practical exercise, and in omitting the sentence on question letters and parts. The placeholders in braces are filled at each call; <code>{cache_buster}</code> is a comment holding a random hexadecimal token, and the judge must return the sum of the two random integers in the <code>cache_beaker</code> field of each verdict.</p>
+
+<pre>Na segunda fase do exame da Ordem dos Advogados do Brasil o candidato deve responder a questões discursivas.
+
+Você será o avaliador da resposta do candidato. Receberá 3 campos: &#x27;gabarito&#x27;, &#x27;criterios&#x27; e &#x27;resposta_candidato&#x27;.
+O campo &#x27;gabarito&#x27; é a referência oficial de resposta. O campo &#x27;criterios&#x27; define os critérios objetivos para conferição de pontuação e o campo resposta_candidato contém a resposta do candidato.
+
+A persona que irá adotar para avaliar é uma examinador e professor de direito experiente com 10 anos de profissão.
+
+Instruções de resposta:
+1. A resposta deve ser um json com o campo &#x27;resultado&#x27; cujo conteúdo tem a mesma estrutura do JSON com os critérios mas com três campos a mais em cada linha: &#x27;acerto&#x27;, que pode ser 0 ou 1 a depender se o candidato satisfez o critério, &#x27;raciocinio&#x27;, que contém o motivo da decisão, resumidamente e &#x27;cache_beaker&#x27; contém a soma entre {num1} e {num2} .
+2. Os critérios de nota estão definidos no campo &#x27;criterios&#x27;. Nele, há quanto cada cumprimento de critério confere de pontuação.
+3. O critério contém referências às letras da questão (A, B, C) e a parte dessa mesma questão, que funciona como um pedaço da questão.
+
+REGRAS IMPORTANTES DE AVALIAÇÃO (cumpra todas):
+- Quando o critério contiver alternativas separadas por &quot;ou&quot; (ex.: &quot;Art. X da CRFB/88 ou Súmula Vinculante nº Y&quot;), QUALQUER UMA das alternativas é suficiente para acerto=1. NÃO exija que o candidato cite todas.
+- Aceite paráfrases corretas e variações de redação do gabarito (ex.: &quot;art. 71, III, da Constituição Federal&quot; = &quot;Art. 71, inciso III, da CRFB/88&quot; = &quot;artigo 71, III, CF&quot;).
+- Avalie o CONCEITO jurídico, não o match literal. Se o candidato expressou a ideia certa com outras palavras, é acerto=1.
+- Para critérios de citação legal: se o gabarito lista N referências como alternativas (com &quot;ou&quot;), basta o candidato citar 1 delas — mesmo que com formato ligeiramente diferente — para acerto=1.
+- Se o gabarito lista N elementos COM &quot;e&quot; (cumulativos), aí sim exija TODOS.
+
+A resposta final não deve ter &#x27;&#x27;&#x27;json porque isso quebra a lógica.
+
+{cache_buster}
+
+RESPOSTA CANDIDATO
+´´´ {resposta_candidato} ´´´
+
+GABARITO
+´´´ {gabarito} ´´´
+
+CRITERIOS
+´´´ {criterios} ´´´
+
+JSON resposta:</pre>
+
+<h2><span class="num"></span>Appendix B. A complete item</h2>
+
+<p>Administrative law, edition 41, discursive question 1. The case: a tenured federal servant obtained voluntary retirement from her agency; the Federal Court of Accounts, which received the file a year earlier, found inconsistencies and is inclined to refuse its registration. Question A asks whether the retirement act was perfect before the Court of Accounts ruled; question B whether the Court must observe the right to be heard before refusing registration. The case statement in the original:</p>
+
+<pre>Esglobênia, servidora pública federal estável, acreditava ter preenchido os respectivos requisitos do Regime Próprio de Previdência no cargo que ocupava, razão pela qual pleiteou e obteve, junto ao órgão de origem, a aposentadoria voluntária.  Ato contínuo, o processo foi encaminhado ao Tribunal de Contas da União, o qual verificou algumas inconsistências no deferimento do pedido, de modo que está tendente a negar o registro da aposentadoria, sendo certo que o processo chegou na Corte de Contas há apenas um ano.  Diante dessa situação hipotética, responda como advogado(a), fundamentadamente, aos questionamentos a seguir.  A)  O ato aposentadoria de Esglobênia estava perfeito, ou seja, completou o seu ciclo de formação, antes do pronunciamento da Corte de Contas? Justifique. (Valor: 0,60) B) Para negar o registro da aposentadoria de Esglobênia, o Tribunal de Contas precisa observar a ampla defesa e o contraditório? Justifique. (Valor: 0,65) Obs.: o(a) examinando(a) deve fundamentar as respostas. A mera citação do dispositivo legal não confere pontuação.</pre>
+
+<p>The answer under evaluation, written by GPT-4o mini, as the human annotators and the judges saw it:</p>
+
+<pre>A) O ato de aposentadoria de Esglobênia não estava perfeito, pois o processo de aposentadoria ainda estava sujeito à análise do Tribunal de Contas da União (TCU), que possui a competência para apreciar a legalidade dos atos administrativos, incluindo a aposentadoria de servidores públicos. O ciclo de formação do ato se completa com o registro pelo TCU, e enquanto este não ocorrer, o ato permanece sob análise e pode ser considerado irregular.
+
+B) Sim, para negar o registro da aposentadoria de Esglobênia, o Tribunal de Contas deve observar o princípio da ampla defesa e do contraditório. Isso se deve ao fato de que a negativa de registro implica em uma decisão que pode afetar diretamente os direitos da servidora, sendo necessário garantir que ela tenha a oportunidade de se manifestar e apresentar suas razões antes que uma decisão desfavorável seja tomada.</pre>
+
+<p>The four criteria of the board, in the original:</p>
+<ul>
+<li><b>A-I</b> (0.50 points). Não. A concessão de aposentadoria configura ato complexo que só estará perfeito após pronunciamento da Corte de Contas</li>
+<li><b>A-II</b> (0.10 points). nos termos do Art. 71, inciso III, da CRFB/88 ou Súmula Vinculante nº 3</li>
+<li><b>B-I</b> (0.55 points). Não. O contraditório e a ampla defesa são assegurados no Tribunal de Contas da União quando da decisão puder resultar anulação ou revogação de ato administrativo, excetuada a apreciação de legalidade do ato de concessão inicial de aposentadoria, reforma e pensão</li>
+<li><b>B-II</b> (0.10 points). consoante a Súmula Vinculante nº 3</li>
+</ul>
+
+<p>Table 6 gives, for each criterion, the verdict of each annotator and the verdict of Kimi K2.5 in each of the five repetitions, as the majority of three samples. In repetitions 1 and 2, one of the three samples marked criterion A-I as not met; the majority recovers the verdict, which is the variation the noise floor of Section 4.2 measures.</p>
+
+<figure class="tab" id="tab-6">
+<figcaption><b>Table 6.</b> The item of Appendix B: criteria, points, the three human verdicts and the majority verdict of Kimi K2.5 in each of the five repetitions (1 = met).</figcaption>
+<div class="rol"><table>
+<thead><tr><th>Criterion</th><th class="n">Points</th><th>Humans</th><th>Kimi, reps 1–5</th></tr></thead>
+<tbody>
+<tr><td>A-I</td><td class="n">0.50</td><td>1 / 1 / 1</td><td>1 1 1 1 1</td></tr>
+<tr><td>A-II</td><td class="n">0.10</td><td>0 / 0 / 0</td><td>0 0 0 0 0</td></tr>
+<tr><td>B-I</td><td class="n">0.55</td><td>0 / 0 / 0</td><td>0 0 0 0 0</td></tr>
+<tr><td>B-II</td><td class="n">0.10</td><td>0 / 0 / 0</td><td>0 0 0 0 0</td></tr>
+</tbody></table></div>
+</figure>
+
+<h2><span class="num"></span>Appendix C. Configuration of the judges</h2>
+<p>All 31 judges run at temperature 0.2, without a seed, with the prompt of Appendix A. The output ceiling is the one requested; when an answer is cut, the ceiling is doubled up to 32,000 tokens or up to the limit the model accepts. Samples is the number of independent calls per question in each repetition, combined by majority vote. Respondents run at temperature 0.7, with an output ceiling of 2,500 tokens and three runs per question.</p>
+<figure class="tab" id="tab-7">
+<figcaption><b>Table 7.</b> The judges: provider API, model identifier, requested output ceiling in tokens and samples per repetition.</figcaption>
+<div class="rol"><table>
+<thead><tr><th>Judge</th><th>API</th><th>Model identifier</th><th class="n">Ceiling</th><th class="n">Samples</th></tr></thead>
+<tbody>
+<tr><td>claude-haiku-4-5</td><td>Bedrock</td><td><code>us.anthropic.claude-haiku-4-5-20251001-v1:0</code></td><td class="n">8,000</td><td class="n">1</td></tr>
+<tr><td>claude-opus-4-5</td><td>Bedrock</td><td><code>us.anthropic.claude-opus-4-5-20251101-v1:0</code></td><td class="n">8,000</td><td class="n">1</td></tr>
+<tr><td>claude-opus-4-6</td><td>Bedrock</td><td><code>us.anthropic.claude-opus-4-6-v1</code></td><td class="n">8,000</td><td class="n">1</td></tr>
+<tr><td>claude-sonnet-4-5</td><td>Bedrock</td><td><code>us.anthropic.claude-sonnet-4-5-20250929-v1:0</code></td><td class="n">8,000</td><td class="n">1</td></tr>
+<tr><td>claude-sonnet-4-6</td><td>Bedrock</td><td><code>us.anthropic.claude-sonnet-4-6</code></td><td class="n">8,000</td><td class="n">1</td></tr>
+<tr><td>deepseek-v3</td><td>Bedrock</td><td><code>deepseek.v3.2</code></td><td class="n">8,000</td><td class="n">3</td></tr>
+<tr><td>glm-4-7</td><td>Bedrock</td><td><code>zai.glm-4.7</code></td><td class="n">8,000</td><td class="n">3</td></tr>
+<tr><td>glm-5</td><td>Bedrock</td><td><code>zai.glm-5</code></td><td class="n">8,000</td><td class="n">3</td></tr>
+<tr><td>gpt-oss-120b</td><td>Bedrock</td><td><code>openai.gpt-oss-120b-1:0</code></td><td class="n">16,000</td><td class="n">3</td></tr>
+<tr><td>kimi-k2-5</td><td>Bedrock</td><td><code>moonshotai.kimi-k2.5</code></td><td class="n">16,000</td><td class="n">3</td></tr>
+<tr><td>kimi-k2-thinking</td><td>Bedrock</td><td><code>moonshot.kimi-k2-thinking</code></td><td class="n">16,000</td><td class="n">3</td></tr>
+<tr><td>llama3-3-70b</td><td>Bedrock</td><td><code>us.meta.llama3-3-70b-instruct-v1:0</code></td><td class="n">2,048</td><td class="n">3</td></tr>
+<tr><td>llama3-70b</td><td>Bedrock</td><td><code>meta.llama3-70b-instruct-v1:0</code></td><td class="n">2,048</td><td class="n">3</td></tr>
+<tr><td>llama3-8b</td><td>Bedrock</td><td><code>meta.llama3-8b-instruct-v1:0</code></td><td class="n">2,048</td><td class="n">3</td></tr>
+<tr><td>llama4-maverick</td><td>Bedrock</td><td><code>us.meta.llama4-maverick-17b-instruct-v1:0</code></td><td class="n">8,000</td><td class="n">3</td></tr>
+<tr><td>llama4-scout</td><td>Bedrock</td><td><code>us.meta.llama4-scout-17b-instruct-v1:0</code></td><td class="n">8,000</td><td class="n">3</td></tr>
+<tr><td>magistral-small</td><td>Bedrock</td><td><code>mistral.magistral-small-2509</code></td><td class="n">16,000</td><td class="n">3</td></tr>
+<tr><td>minimax-m2-5</td><td>Bedrock</td><td><code>minimax.minimax-m2.5</code></td><td class="n">8,000</td><td class="n">3</td></tr>
+<tr><td>mistral-l3-675b</td><td>Bedrock</td><td><code>mistral.mistral-large-3-675b-instruct</code></td><td class="n">8,000</td><td class="n">3</td></tr>
+<tr><td>mistral-large</td><td>Bedrock</td><td><code>mistral.mistral-large-2402-v1:0</code></td><td class="n">8,000</td><td class="n">3</td></tr>
+<tr><td>mistral-small</td><td>Bedrock</td><td><code>mistral.mistral-small-2402-v1:0</code></td><td class="n">2,048</td><td class="n">3</td></tr>
+<tr><td>mixtral-8x7b</td><td>Bedrock</td><td><code>mistral.mixtral-8x7b-instruct-v0:1</code></td><td class="n">4,096</td><td class="n">3</td></tr>
+<tr><td>nemotron-s3-120b</td><td>Bedrock</td><td><code>nvidia.nemotron-super-3-120b</code></td><td class="n">8,000</td><td class="n">3</td></tr>
+<tr><td>nova-lite</td><td>Bedrock</td><td><code>amazon.nova-lite-v1:0</code></td><td class="n">8,000</td><td class="n">3</td></tr>
+<tr><td>nova-micro</td><td>Bedrock</td><td><code>amazon.nova-micro-v1:0</code></td><td class="n">8,000</td><td class="n">3</td></tr>
+<tr><td>nova-pro</td><td>Bedrock</td><td><code>amazon.nova-pro-v1:0</code></td><td class="n">8,000</td><td class="n">3</td></tr>
+<tr><td>qwen3-235b-vl</td><td>Bedrock</td><td><code>qwen.qwen3-vl-235b-a22b</code></td><td class="n">8,000</td><td class="n">3</td></tr>
+<tr><td>qwen3-32b</td><td>Bedrock</td><td><code>qwen.qwen3-32b-v1:0</code></td><td class="n">8,000</td><td class="n">3</td></tr>
+<tr><td>qwen3-80b-a3b</td><td>Bedrock</td><td><code>qwen.qwen3-next-80b-a3b</code></td><td class="n">8,000</td><td class="n">3</td></tr>
+<tr><td>sabia-4</td><td>Maritaca</td><td><code>sabia-4</code></td><td class="n">8,000</td><td class="n">3</td></tr>
+<tr><td>sabiazinho-4</td><td>Maritaca</td><td><code>sabiazinho-4</code></td><td class="n">8,000</td><td class="n">3</td></tr>
+</tbody></table></div>
+</figure>
+
+<h2><span class="num"></span>Appendix D. Criterion titles by class</h2>
+<p>The board gives each document criterion a title. We grouped the 60 distinct titles into the two classes of Section 3.2; the number of criteria with each title is in parentheses. No title falls in both classes.</p>
+<p><b>Form</b> (148 criteria): Endereçamento (56); Fechamento (22); Partes e Fundamento Legal (10); Qualificação das partes (9); Prazo e Fechamento (6); Gratuidade de justiça e prioridade (4); Interposição (4); Petição de Interposição (4); Requisitos de admissibilidade recursal (4); Tempestividade (4); ENDEREÇAMENTO (3); Procedimento (3); Requisitos de Admissibilidade Recursal (3); Encerramento (2); Honorários advocatícios (2); Partes (2); Peça (2); Qualificação dos interessados/ requerentes (2); Requisitos Tempestividade (2); Valor da causa / Fechamento (2); FECHAMENTO (1); Menção ao valor da causa (1).</p>
+<p><b>Substance</b> (413 criteria): Pedidos (71); Fundamentação (55); Fundamentos de mérito (34); Fundamentação Jurídica/Legal (23); Razões recursais (21); Mérito (20); Razões de apelação (19); Cabimento (14); Direitos lesados (14); Fatos e Alegações de Mérito (12); Fundamentos jurídicos (12); Requerimentos (11); Legitimidade (9); PEDIDOS (9); Direitos violados (8); Fundamentos (8); Vínculo e verbas pela extinção (7); Das Provas (6); Fundamentos da cautelar (6); DAS PROVAS E DO DEMONSTRATIVO DO DÉBITO ATUALIZADO (5); Dano Patrimonial (material) (5); Dos Pedidos (5); Fundamentos da liminar (5); Alegações Preliminares (4); Cabimento da ADC (4); FUNDAMENTOS JURÍDICOS (3); Prova domínio e qualidade de terceiro (3); Tutela provisória de urgência (3); DO TÍTULO EXECUTIVO EXTRAJUDICIAL (2); Dano Extrapatrimonial (2); Do litisconsórcio unitário (2); Fundamentos para a concessão da medida liminar (2); LEGITIMIDADE ATIVA (2); LEGITIMIDADE PASSIVA (2); Pedido (2); Fatos (1); Legitimidade ativa (1); Razões (1).</p>
 
 <h2><span class="num"></span>Acknowledgements and declarations</h2>
 
@@ -36,5 +154,12 @@
 <li>Pacheco, E., Russo, C. M. <i>Agreement of 31 candidate automatic judges against a human gold standard on Brazilian legal tasks</i>, v1.0 [Data set]. Zenodo, 2026. doi:10.5281/zenodo.22739161.</li>
 <li>Pacheco, E., Russo, C. M. <i>Paired raw and structured corpora for Brazilian legal domain adaptation</i>, v1.0 [Data set]. Zenodo, 2026. doi:10.5281/zenodo.22739216.</li>
 <li>Pacheco, E., Russo, C. M. <i>Judgments of 180 trained conditions on a Brazilian Bar Examination benchmark</i>, v1.0 [Data set]. Zenodo, 2026. doi:10.5281/zenodo.22739184.</li>
-<li>Pacheco, E. <i>Measuring the competence of LLMs in Brazilian law</i> [Source code]. github.com/eduardocbpacheco/measuring-llm-competence-brazilian-law, 2026.</li>
+<li>Pacheco, E. <i>Measuring the competence of LLMs in Brazilian law: answering, drafting and judging</i> [Source code]. github.com/eduardocbpacheco/measuring-llm-competence-brazilian-law-, 2026.</li>
+<li>Thakur, A. S., Choudhary, K., Ramayapally, V. S., Vaidyanathan, S., Hupkes, D. <i>Judging the Judges: Evaluating Alignment and Vulnerabilities in LLMs-as-Judges</i>. Proceedings of the Fourth Workshop on Generation, Evaluation and Metrics (GEM²), 2025. arXiv:2406.12624.</li>
+<li>Tan, S., Zhuang, S., Montgomery, K., Tang, W. Y., Cuadron, A., Wang, C., Popa, R. A., Stoica, I. <i>JudgeBench: A Benchmark for Evaluating LLM-based Judges</i>. ICLR, 2025.</li>
+<li>Zeng, Z., Yu, J., Gao, T., Meng, Y., Goyal, T., Chen, D. <i>Evaluating Large Language Models at Evaluating Instruction Following</i>. ICLR, 2024.</li>
+<li>Panickssery, A., Bowman, S. R., Feng, S. <i>LLM Evaluators Recognize and Favor Their Own Generations</i>. NeurIPS, 2024.</li>
+<li>Feinstein, A. R., Cicchetti, D. V. <i>High Agreement but Low Kappa: I. The Problems of Two Paradoxes</i>. Journal of Clinical Epidemiology, 43(6), 543–549, 1990.</li>
+<li>Byrt, T., Bishop, J., Carlin, J. B. <i>Bias, Prevalence and Kappa</i>. Journal of Clinical Epidemiology, 46(5), 423–429, 1993.</li>
+<li>Gwet, K. L. <i>Computing Inter-Rater Reliability and Its Variance in the Presence of High Agreement</i>. British Journal of Mathematical and Statistical Psychology, 61(1), 29–48, 2008.</li>
 </ol>
